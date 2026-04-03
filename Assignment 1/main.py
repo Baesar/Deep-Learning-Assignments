@@ -6,10 +6,10 @@ from keras import layers
 from tensorflow import data as tf_data
 import matplotlib.pyplot as plt
 
-gpus = tf.config.list_physical_devices("GPU")
-if gpus:
-    for gpu in gpus:
-        tf.config.experimental.set_memory_growth(gpu, True)
+# gpus = tf.config.list_physical_devices("GPU")
+# if gpus:
+#     for gpu in gpus:
+#         tf.config.experimental.set_memory_growth(gpu, True)
 
 num_skipped = 0
 for folder_name in ("Cat", "Dog"):
@@ -30,7 +30,7 @@ for folder_name in ("Cat", "Dog"):
 print(f"Deleted {num_skipped} images.")
 
 image_size = (180, 180)
-batch_size = 32
+batch_size = 128
 
 train_ds, val_ds = keras.utils.image_dataset_from_directory(
     "PetImages",
@@ -143,3 +143,6 @@ model.fit(
     callbacks=callbacks,
     validation_data=val_ds
 )
+
+model_path = "model.h5"
+model.save(model_path)

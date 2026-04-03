@@ -1,4 +1,9 @@
 PetImages/
+Images/
+Experiment 1/
+Experiment 2/
+Experiment 3/
+Experiment 4/
 *.keras
 
 # Byte-compiled / optimized / DLL files
